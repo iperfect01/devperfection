@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand: DevPerfection */
+    --background: 216 56% 12%; /* #0D1B2A */
+    --foreground: 210 40% 96%;
+
+    --card: 216 45% 14%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 216 45% 14%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 213 28% 35%; /* #415A77 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 24% 24%; /* #1B263B */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 16% 22%;
+    --muted-foreground: 215 15% 70%;
+
+    --accent: 145 80% 45%; /* Neon green for CTAs */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 24% 24%;
+    --input: 215 24% 24%;
+    --ring: 145 80% 45%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 216 56% 12%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 213 28% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 80% 45%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 24% 24%;
+    --sidebar-ring: 145 80% 45%;
+
+    /* DevPerfection special tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.85), hsl(var(--secondary) / 0.85));
+    --gradient-hero: radial-gradient(1200px circle at 20% 10%, hsl(145 80% 45% / 0.15), transparent 40%), radial-gradient(800px circle at 80% 30%, hsl(213 28% 35% / 0.25), transparent 50%);
+    --shadow-elegant: 0 10px 30px -10px hsl(213 28% 35% / 0.35);
+    --shadow-glow: 0 0 40px hsl(145 80% 45% / 0.35);
+  }
+
+  .dark {
+    --background: 216 64% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 216 56% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 216 56% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 213 28% 35%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 24% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 216 20% 18%;
+    --muted-foreground: 215 15% 72%;
+
+    --accent: 145 80% 45%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 216 30% 18%;
+    --input: 216 30% 18%;
+    --ring: 145 80% 45%;
+
+    --sidebar-background: 216 64% 8%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 213 28% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 80% 45%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 216 30% 18%;
+    --sidebar-ring: 145 80% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: var(--gradient-hero);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+
+@layer utilities {
+  .hover-scale { @apply transition-transform duration-200 hover:scale-105; }
+  .story-link { @apply relative inline-block; }
+  .story-link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0; left: 0;
+    background: hsl(var(--accent));
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+  .story-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
